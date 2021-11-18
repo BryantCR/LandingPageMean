@@ -1,5 +1,5 @@
 const http = require( 'http' ); //Para configurar server
-const fs = require = ( 'fs' ); //Para manipular archivos
+const fs = require( 'fs' ); //Para manipular archivos
 																					//Estos dos argumentos son nesesarios
 const server = http.createServer(function( request, response ){
     console.log('client request URL: ', request.url);
