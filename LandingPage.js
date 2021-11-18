@@ -2,6 +2,8 @@ const http = require( 'http' ); //Para configurar server
 const fs = require = ( 'fs' ); //Para manipular archivos
 																					//Estos dos argumentos son nesesarios
 const server = http.createServer(function( request, response ){
+    console.log('client request URL: ', request.url);
+
 	if( request.url === "/" ){
 		fs.readFile('index.html', 'utf-8', function(errors, contents){
 			response.writeHead(200, {'Content-Type': 'text/html'} );
@@ -9,14 +11,14 @@ const server = http.createServer(function( request, response ){
 				response.end();
 		})
 	}
-    if( request.url === "/ninjas" ){
+    else if( request.url === "/ninjas" ){
 		fs.readFile('ninjas.html', 'utf-8', function(errors, contents){
 			response.writeHead(200, {'Content-Type': 'text/html'} );
 				response.write( contents );
 				response.end();
 		})
 	}
-    if( request.url === "/dojos/new" ){
+    else if( request.url === "/dojos/new" ){
 		fs.readFile('dojos.html', 'utf-8', function(errors, contents){
 			response.writeHead(200, {'Content-Type': 'text/html'} );
 				response.write( contents );
@@ -30,3 +32,5 @@ const server = http.createServer(function( request, response ){
 })
 
 server.listen( 8080 );
+
+console.log("Running in localhost at port 8080");
